@@ -4,11 +4,12 @@ import sqlite3 as sl
 import time
 import datetime
 import requests
+import os
 
 from github import Github, GithubException
 from github.ContentFile import ContentFile
 
-gh_api_token = "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"
+gh_api_token = os.environ.get('GH_TOKEN')
 
 re_cfn = re.compile("Resources\:.*AWS", re.DOTALL)
 re_helm = re.compile("(namespace: kube-system|name: pod-exec|kind: ClusterRole|apiVersion: .*.k8s.io|apiVersion: v1)")
